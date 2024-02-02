@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Passkey Demo</title>
+  </head>
+  <body>
+    <h3>User Registration</h2>
+    <% if params['error'] == 'already_registered_user' %>
+      <font color="red">
+        <%= 'Already registered user' %>
+      </font>
+    <% end %>
+    <form action="/register" method="post">
+      <div>
+        <label for="name">name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div>
+        <label for="password">password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div>
+        <button type="submit">Registration</button>
+      </div>
+    </form>
+
+    <h3>User Login</h2>
+    <% if params['error'] == 'user_not_found' %>
+      <font color="red">
+        <%= 'User not found' %>
+      </font>
+    <% end %>
+    <% if params['error'] == 'login_failed' %>
+      <font color="red">
+        <%= 'Login failed' %>
+      </font>
+    <% end %>
+    <form action="/login" method="post">
+      <div>
+        <label for="name">name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div>
+        <label for="password">password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div>
+        <button type="submit">Login</button>
+      </div>
+    </form>
+
+    </br>
+    </br>
+    </br>
+
+    <button id="login_with_passkey">Login with Passkey</button>
+
+    <script src="utils.js"></script>
+    <script src="login_with_passkey.js"></script>
+    <script>
+      const url = new URL(window.location.href);
+      history.replaceState('', '', url.pathname);
+      document.getElementById("login_with_passkey").addEventListener("click", loginWithPasskey);
+    </script>
+  </body>
+</html>

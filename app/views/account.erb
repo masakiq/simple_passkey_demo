@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Passkey Demo</title>
+  </head>
+  <body>
+    <h3>My Account</h2>
+
+    name: <%= @user.name %>
+
+    </br>
+    </br>
+
+    <button id="register_passkey">Register Passkey</button>
+
+    </br>
+    </br>
+    </br>
+
+    <section>
+      <h3> Your registered Passkeys:</h3>
+      <div id="passkey_list"></div>
+    </section>
+
+    </br>
+    </br>
+    </br>
+
+    <form action="/logout" method="post">
+      <button type="submit">Logout</button>
+    </form>
+
+    <script src="utils.js"></script>
+    <script src="register_passkey.js"></script>
+    <script src="render_passkeys.js"></script>
+    <script>
+      document.getElementById("register_passkey").addEventListener("click", registerPasskey);
+
+    </script>
+  </body>
+</html>
