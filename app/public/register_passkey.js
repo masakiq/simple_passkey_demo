@@ -22,7 +22,7 @@ async function sendPublicKeyToServer(credentials) {
     id: credentials.id,
     type: credentials.type,
     rawId: base64url.encode(credentials.rawId),
-    authenticatorAttachment: credentials.platform,
+    authenticatorAttachment: credentials.authenticatorAttachment,
     response: {
       attestationObject: base64url.encode(
         credentials.response.attestationObject
