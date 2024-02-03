@@ -7,9 +7,12 @@ require 'cbor'
 require 'pry'
 require 'webauthn'
 require 'sqlite3'
+require 'uri'
 require_relative 'init_db'
 require_relative 'models/user'
 require_relative 'models/credential'
+
+ORIGIN_URI = URI.parse(ARGV[0] || 'http://localhost:4567')
 
 set :bind, '0.0.0.0'
 set :port, 4567
@@ -43,8 +46,9 @@ helpers do
 end
 
 WebAuthn.configure do |config|
-  config.origin = 'http://localhost:4567'
-  config.rp_name = 'Example Inc.'
+  config.origin = ORIGIN_URI.to_s
+  config.rp_name = 'Simple Passkey Demo Inc.'
+  config.rp_id = ORIGIN_URI.host
 end
 
 get '/' do

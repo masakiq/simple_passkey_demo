@@ -16,11 +16,15 @@ $ bundle install
 $ bundle exec ruby app/main.rb
 ```
 
-## Open browser
+The default is to start up `http://localhost:4567`.
+
+- Specify the URI of the Relying party
 
 ```
-$ open http://localhost:4567
+$ bundle exec ruby app/main.rb https://example.ngrok-free.app
 ```
+
+Then You can create the Passkey in the domain of the relying party.
 
 # Sequence diagram
 
