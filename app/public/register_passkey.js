@@ -28,7 +28,9 @@ async function sendPublicKeyToServer(credentials) {
         credentials.response.attestationObject
       ),
       clientDataJSON: base64url.encode(credentials.response.clientDataJSON),
-      transports: credentials.response.getTransports(),
+      transports: credentials.response?.getTransports
+        ? credentials.response.getTransports()
+        : [],
     },
   };
 
