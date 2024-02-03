@@ -11,7 +11,7 @@ async function getCredential(options) {
 
   const cred = await navigator.credentials.get({
     publicKey: options,
-    mediation: "conditional",
+    mediation: "required",
   });
 
   const credential = {};
